@@ -1,12 +1,151 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>LearnIt</title>
-		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script src="javascript/app.js"></script>
-	</head>
-	<body>
-	
-	</body>
+
+<head>
+    <title>LearnIt</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="javascript/app.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <a href="#">
+            <img src="./assets/LearnItLogo.png" id="logo" />
+        </a>
+        <div class="links">
+            <a href="#">Exercises</a>
+            <span>   |   </span>
+            <a href="#">My Collections</a>
+            <span>   |   </span>
+            <a href="#">Logout</a>
+        </div>
+    </div>
+    <div class="subheader">
+        <form>
+            <button formaction="#">Do Next Exercise!</button>
+        </form>
+        <div class="subheader-text">
+            <h1>Hello, Jack!</h1>
+            <p>You have 1 photo card, finish more exercises to get more!</p>
+        </div>
+    </div>
+
+    <div class="exercise-table">
+        <div class="table-header">
+            <h1> Exercises </h1>
+            <div class="progress-container">
+                <progress value=0.2></progress>
+                <p id="progress-text"> 20% Complete </p>
+            </div>
+        </div>
+        <a class="exercise-row" href="#">
+            <div>
+                <img class="icon" src="./assets/finished-icon.svg" />
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 1</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <p class="due-date">Due March 21, 2017</p>
+            </div>
+        </a>
+        <a class="exercise-row" href="#">
+            <div>
+                <img class="icon" src="./assets/finished-icon.svg" />
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 2</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <p class="due-date">Due March 22, 2017</p>
+            </div>
+        </a>
+        <a class="exercise-row" href="#">
+            <div>
+                <img class="icon" src="./assets/inprogress-icon.svg" />
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 3</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <div class="exercise-progress-container">
+                    <p>30% complete</p>
+                    <progress value=0.3><progress>
+                </div>
+                <p class="due-date">Due March 23, 2017</p>
+            </div>
+        </a>
+        <a class="exercise-row" href="#">
+            <div>
+                <div class="placeholder"> </div>
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 4</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <p class="due-date">Due March 24, 2017</p>
+            </div>
+        </a>
+        <a class="exercise-row" href="#">
+            <div>
+                <div class="placeholder"> </div>
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 5</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <p class="due-date">Due March 25, 2017</p>
+            </div>
+        </a>
+        <a class="exercise-row" href="#">
+            <div>
+                <div class="placeholder"> </div>
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 6</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <p class="due-date">Due March 26, 2017</p>
+            </div>
+        </a>
+        <a class="exercise-row" href="#">
+            <div>
+                <div class="placeholder"> </div>
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 7</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <p class="due-date">Due March 27, 2017</p>
+            </div>
+        </a>
+        <a class="exercise-row" href="#">
+            <div>
+                <div class="placeholder"> </div>
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 8</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <p class="due-date">Due March 28, 2017</p>
+            </div>
+        </a>
+        <a class="exercise-row" href="#">
+            <div>
+                <div class="placeholder"> </div>
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 9</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <p class="due-date">Due March 29, 2017</p>
+            </div>
+        </a>
+        <a class="exercise-row" href="#">
+            <div>
+                <div class="placeholder"> </div>
+                <div class="title-container">
+                    <p class="exercise-number">Exercise 10</p>
+                    <p class="exercise-title">Addition</p>
+                </div>
+                <p class="due-date">Due March 30, 2017</p>
+            </div>
+        </a>
+
+    </div>
+
+</body>
+
 </html>

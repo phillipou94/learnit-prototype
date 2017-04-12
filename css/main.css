@@ -2,18 +2,235 @@
 GLOBAL
 *********************************/
 
-@import url(https://fonts.googleapis.com/css?family=Dosis:300,400,500,600&subset=latin-ext);
 
-*{
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-  	-webkit-box-sizing: border-box;
+/*
+Color Hex Values:
+blue = #465568;
+orange = #F26B5C;
+green = #66B110;
+light-blue = #6DCFF6;
+ */
+
+@import url(https://fonts.googleapis.com/css?family=Dosis:300,400,500,600&subset=latin-ext);
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     font-family: 'Dosis', sans-serif;
     background: white;
 }
 
+p,
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border-style: none;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.header {
+    background: #465568;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 0;
+}
+
+#logo {
+    margin: 10px;
+    height: 60px;
+}
+
+.links {
+    float: right;
+    margin-top: 30px;
+}
+
+.links a,
+.links span {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.links span {
+    margin: 5px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.subheader {
+    margin: 0;
+    padding: 70px 40px;
+    background: #6DCFF6;
+    color: white;
+}
+
+.subheader h1 {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.subheader p {
+    font-size: 30px;
+}
+
+.subheader button {
+    background: #F26B5C;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 15px 30px;
+    float: right;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.subheader button:active {
+    background: #D45E51;
+}
+
+.exercise-table {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 1px #465568 solid;
+    display: table;
+    overflow: auto;
+}
+
+.table-header {
+    background: #465568;
+    height: 80px;
+    width: 100%;
+    display: flex;
+}
+
+.table-header h1 {
+    color: white;
+    font-size: 40px;
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: white;
+}
+
+progress[value]::-webkit-progress-value {
+    background-color: #F26B5C;
+}
+
+.progress-container {
+    margin-left: 50px;
+    margin-top: 35px;
+}
+
+.progress-container progress[value] {
+    width: 250px;
+    height: 20px;
+}
+
+#progress-text {
+    display: inline-block;
+    color: white;
+    margin-left: 20px;
+}
+
+.exercise-row {
+    height: 100px;
+    background: white;
+    border-bottom: 1px solid #465568;
+    cursor: pointer;
+    display: block;
+}
+
+.exercise-row .icon,
+.exercise-row .placeholder {
+    width: 50px;
+    height: 50px;
+    float: left;
+    display: inline-block;
+    margin: 20px;
+}
+
+.exercise-row .title-container {
+    display: inline-block;
+    margin: 20px;
+    margin-top: 10px;
+    color: #465568;
+}
+
+.exercise-row .title-container .exercise-number {
+    font-size: 20px;
+}
+
+.exercise-row .title-container .exercise-title {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.exercise-progress-container {
+    display: inline-block;
+    margin-left: 25%;
+}
+
+.exercise-progress-container p {
+    text-align: center;
+    color: #465568;
+    margin-bottom: 10px;
+}
+
+.exercise-progress-container progress[value] {
+    width: 200px;
+    height: 20px;
+}
+
+.exercise-progress-container progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    border: 1px solid #465568;
+}
+
+.exercise-progress-container progress[value]::-webkit-progress-bar {
+    background-color: white;
+}
+
+.exercise-progress-container progress[value]::-webkit-progress-value {
+    background-color: #F26B5C;
+}
+
+.due-date {
+    float: right;
+    text-decoration: underline;
+    color: #465568;
+    margin-top: 20px;
+    margin-right: 30px;
+}
