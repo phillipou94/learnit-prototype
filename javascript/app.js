@@ -41,5 +41,18 @@ $(document).ready(function(){
          $(this).css("border-style", "none");
     });
 
+
+    $("#check-button1").click(function(){
+        console.log("clicked check button 1");
+
+        $("#1").animate({opacity:0},
+          {duration: "slow"         });
+
+    });
+
+
+
 });
+
+console.log("Executing app.js");
 
