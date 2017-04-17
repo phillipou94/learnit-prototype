@@ -42,12 +42,21 @@ $(document).ready(function(){
     });
 
 
-    $("#check-button1").click(function(){
-        console.log("clicked check button 1");
+    // $("#check-button1").click(function(){
+    //     console.log("clicked check button 1");
 
-        $("#1").animate({opacity:0},
-          {duration: "slow"         });
+    //     $("#1").animate({opacity:0},
+    //       {duration: "slow"         });
 
+    // });
+
+
+    $("#check-button1").submit(function (event) {
+     console.log("clicked check button 1");
+     $("#1").animate({opacity:0},
+           {duration: "slow"         });
+        //return false;
+        event.preventDefault();
     });
 
 
