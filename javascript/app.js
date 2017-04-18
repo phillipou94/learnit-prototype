@@ -42,26 +42,26 @@ $(document).ready(function(){
     });
 
 
-    // $("#check-button1").click(function(){
-    //     console.log("clicked check button 1");
 
-    //     $("#1").animate({opacity:0},
-    //       {duration: "slow"         });
+    $(".answer-submit").click(function (event) {
+        var selected = this.id;
+        var num = selected[selected.length-1];
+        var selectedId = "#"+num;
 
-    // });
+        var answerId = "#answer-box"+num;
+        var answer = $(answerId).val();
+        
+        if (answer == 17) {         //hard coded for now
+            $(selectedId).animate({opacity:0},
+                   {duration: "slow"         });        
+        } else {
+            alert("Wrong answer!");
+        }
 
-
-    $("#check-button1").submit(function (event) {
-     console.log("clicked check button 1");
-     $("#1").animate({opacity:0},
-           {duration: "slow"         });
-        //return false;
         event.preventDefault();
+
     });
 
 
-
 });
-
-console.log("Executing app.js");
 
