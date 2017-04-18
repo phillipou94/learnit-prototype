@@ -4,7 +4,8 @@
     border: black thin solid;
 }
 
-.left, .right {
+.left,
+.right {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -29,8 +30,7 @@
     font-weight: 500;
 }
 
-#exercise-number{
-}
+#exercise-number {}
 
 #exercise-name {
     font-weight: 900;
@@ -38,12 +38,11 @@
     line-height: 45px;
 }
 
-#exercise-description{
+#exercise-description {
     padding-top: 10px;
 }
 
-#exercise-progess{
-}
+#exercise-progess {}
 
 #cheetah {
     padding: 0;
@@ -72,7 +71,8 @@
     max-height: 540px;
 }
 
-.exercise-content > .left, .exercise-content > .right {
+.exercise-content>.left,
+.exercise-content>.right {
     width: 50%;
 }
 
@@ -91,6 +91,17 @@
     line-height: 25px;
     font-size: 20px;
     padding-left: 5px;
+}
+
+input[type=submit] {
+    border-style: none;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type=submit]:hover {
+    transform: scale(1.1);
 }
 
 .exercise-problem .answer-submit {
