@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 
    // jQuery methods go here...
@@ -35,25 +34,29 @@ $(document).ready(function(){
 
         $(this).css("border", "8px solid #ff3d2b");
         $(this).css("border-width", "0 0 0 2px");
-       
+
         },function(){
          $(this).find(".project-logo").css("border","2px solid rgba(245,245,245,1)");
          $(this).css("border-style", "none");
     });
 
 
-
     $(".answer-submit").click(function (event) {
+
         var selected = this.id;
         var num = selected[selected.length-1];
         var selectedId = "#"+num;
 
         var answerId = "#answer-box"+num;
         var answer = $(answerId).val();
-        
-        if (answer == 17) {         //hard coded for now
+
+        var index = parseInt(num) - 1;
+        var correctAnswers = [9, 13, 3, -11, 47, 22, 3, 69];
+
+        if (parseInt(answer) == correctAnswers[index]) {
+            console.log('correct');
             $(selectedId).animate({opacity:0},
-                   {duration: "slow"         });        
+                   {duration: "slow"});
         } else {
             alert("Wrong answer!");
         }
