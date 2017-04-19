@@ -51,7 +51,7 @@ $(document).ready(function(){
         var answer = $(answerId).val();
 
         var index = parseInt(num) - 1;
-        var correctAnswers = [9, 13, 3, -11, 47, 22, 3, 69];
+        var correctAnswers = [8, 13, 3, -11, 47, 22, 3, 69];
 
         if (parseInt(answer) == correctAnswers[index]) {
             console.log('correct');
