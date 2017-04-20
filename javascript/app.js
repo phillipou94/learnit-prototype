@@ -40,6 +40,20 @@ $(document).ready(function(){
          $(this).css("border-style", "none");
     });
 
+    function shakeDiv(divSelector) {
+
+        var l = 10;
+        for( var i = 0; i <= 10; i++ ) {
+            $( divSelector).animate( {
+                'margin-left': '+=' + ( l = -l ) + 'px',
+                'margin-right': '-=' + l + 'px'
+            }, 30, function(){
+                $(divSelector).css ('margin-left', '');
+                $(divSelector).css ('margin-right', '');
+            });
+        }
+
+    }
 
     $(".answer-submit").click(function (event) {
 
@@ -54,11 +68,39 @@ $(document).ready(function(){
         var correctAnswers = [8, 13, 3, -11, 47, 22, 3, 69];
 
         if (parseInt(answer) == correctAnswers[index]) {
-            console.log('correct');
-            $(selectedId).animate({opacity:0},
-                   {duration: "slow"});
+            const previouslyCompleted = parseInt($('text#completed-count')[0].innerHTML);
+            const nowCompleted = previouslyCompleted + 1;
+            $('text#completed-count')[0].innerHTML = nowCompleted;
+            $(selectedId).animate({opacity:0},{duration: "slow"});
+
+            //when finished with all of them
+            if (nowCompleted == correctAnswers.length) {
+                setTimeout( function(){
+                    $('.exercise-modal > .modal-contents').addClass('success');
+                    $('.exercise-modal').addClass('active');
+                    $('.exercise-modal > .modal-contents').empty();
+                    $('.exercise-modal > .modal-contents').append("<h1>Congrats, you're finished!</h1>");
+                    $('.exercise-modal > .modal-contents').append("<h3>What next?</h3>");
+                    $('.exercise-modal > .modal-contents').append("<div class='next'><a class='close-modal'>View Image</a><span>  |  <a href='./collections.html'>My Collection</a><span>  |  </span><a href='./exercise.html'>Next Exercise</a></div>");
+                    $('.next a.close-modal').on('click', function(){
+                        $('.exercise-modal > .modal-contents').removeClass('success');
+                        $('.exercise-modal').removeClass('active');
+                        $('.exercise-modal > .modal-contents').empty();
+                    });
+                }, 1000);
+            };
         } else {
-            alert("Wrong answer!");
+            $(selectedId + ' .answer-box').addClass('incorrect');
+            shakeDiv('.exercise-problem' + selectedId);
+            $('.exercise-modal > .modal-contents').addClass('failure');
+            $('.exercise-modal').addClass('active');
+            $('.exercise-modal > .modal-contents').empty();
+            $('.exercise-modal > .modal-contents').append("<h1>Try again!</h1>");
+            setTimeout(function(){
+                $('.exercise-modal').removeClass('active');
+                $('.exercise-modal').removeClass('failure');
+                $('.exercise-modal > .modal-contents').empty();
+            }, 700);
         }
 
         event.preventDefault();

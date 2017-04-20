@@ -30,11 +30,15 @@
             </div>
             <div class="right">
                 <p id="exercise-description">Finish to see what's underneath!</p>
-                <p id="exercise-progress">completed <text class="completed">0</text>/8</p>
+                <p id="exercise-progress">completed <text id="completed-count">2</text>/8</p>
             </div>
         </div>
         <div class="game-container">
-            <img id="cheetah" src="./assets/cheetah.png">
+            <img id="exercise-img" src="./assets/cheetah.png">
+            <div class="exercise-content exercise-modal ">
+                <div class="modal-contents">
+                </div>
+            </div>
             <div class="exercise-content">
                 <div class="left">
                     <div class="exercise-problem" id="1">
@@ -67,7 +71,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <div class="exercise-problem" id="5">
+                    <div class="exercise-problem solved" id="5">
                         <form>
                             <p>62 - 15 =</p>
                             <input type="text" placeholder="Answer" class="answer-box" id="answer-box5">
@@ -81,7 +85,7 @@
                             <input type="submit" value="Check" class="answer-submit" id="check-button6">
                         </form>
                     </div>
-                    <div class="exercise-problem" id="7">
+                    <div class="exercise-problem solved" id="7">
                         <form>
                             <p>(8 + 2) - 7 =</p>
                             <input type="text" placeholder="Answer" class="answer-box" id="answer-box7">
