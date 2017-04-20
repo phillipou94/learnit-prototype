@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis:300,400,500,600&subset=latin-ext);
 .exercise {
     padding: 25px 50px;
-    border: black thin solid;
 }
 
 .left,
@@ -44,15 +43,6 @@
 
 #exercise-progess {}
 
-#exercise-img {
-    position: relative;
-    padding: 0;
-    margin: 0 auto;
-    max-height: 100%;
-    max-width: 100%;
-    box-shadow: 0px 0px 2px 2px lightgrey;
-}
-
 .game-container {
     position: relative;
     max-height: 540px;
@@ -61,7 +51,14 @@
     margin-right: auto;
     margin-top: 10px;
 }
-
+#exercise-img {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    max-height: 540px;
+    max-width: 960px;
+    box-shadow: 0px 0px 2px 2px lightgrey;
+}
 .exercise-content.exercise-modal {
     pointer-events: none;
     align-items: center;

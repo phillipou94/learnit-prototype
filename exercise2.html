@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <link rel="stylesheet" type="text/css" href="./css/exercise.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="./javascript/app.js"></script>
+    <script src="./javascript/completed.js"></script>
 </head>
 
 <body>
@@ -30,12 +30,77 @@
             </div>
             <div class="right">
                 <p id="exercise-description">Finish to see what's underneath!</p>
-                <p id="exercise-progress">completed <text class="completed">8</text>/8</p>
+                <p id="exercise-progress">completed <text id="completed-count">8</text>/8</p>
             </div>
         </div>
         <div class="game-container">
-            <img id="cheetah" src="./assets/andrew-luck.png">
-
+            <img id="exercise-img" src="./assets/andrew-luck.png">
+            <div class="exercise-content exercise-modal ">
+                <div class="modal-contents">
+                </div>
+            </div>
+            <div class="exercise-content">
+                <div class="left">
+                    <div class="exercise-problem solved" id="1">
+                        <form>
+                            <p>45 - 37 =</p>
+                            <input type="text" placeholder="Answer" class="answer-box" id="answer-box1">
+                            <input type="submit" value="Check" class="answer-submit" id="check-button1">
+                        </form>
+                    </div>
+                    <div class="exercise-problem solved" id="2">
+                        <form>
+                            <p>32 - 19 =</p>
+                            <input type="text" placeholder="Answer" class="answer-box" id="answer-box2">
+                            <input type="submit" value="Check" class="answer-submit" id="check-button2">
+                        </form>
+                    </div>
+                    <div class="exercise-problem solved" id="3">
+                        <form>
+                            <p>(8 + 7) - 12 =</p>
+                            <input type="text" placeholder="Answer" class="answer-box" id="answer-box3">
+                            <input type="submit" value="Check" class="answer-submit" id="check-button3">
+                        </form>
+                    </div>
+                    <div class="exercise-problem solved" id="4">
+                        <form>
+                            <p>15 - 26 =</p>
+                            <input type="text" placeholder="Answer" class="answer-box" id="answer-box4">
+                            <input type="submit" value="Check" class="answer-submit" id="check-button4">
+                        </form>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="exercise-problem solved" id="5">
+                        <form>
+                            <p>62 - 15 =</p>
+                            <input type="text" placeholder="Answer" class="answer-box" id="answer-box5">
+                            <input type="submit" value="Check" class="answer-submit" id="check-button5">
+                        </form>
+                    </div>
+                    <div class="exercise-problem solved" id="6">
+                        <form>
+                            <p>19 - (56 - 10) + 49 =</p>
+                            <input type="text" placeholder="Answer" class="answer-box" id="answer-box6">
+                            <input type="submit" value="Check" class="answer-submit" id="check-button6">
+                        </form>
+                    </div>
+                    <div class="exercise-problem solved" id="7">
+                        <form>
+                            <p>(8 + 2) - 7 =</p>
+                            <input type="text" placeholder="Answer" class="answer-box" id="answer-box7">
+                            <input type="submit" value="Check" class="answer-submit" id="check-button7">
+                        </form>
+                    </div>
+                    <div class="exercise-problem solved" id="8">
+                        <form>
+                            <p>100 - 16 - 15 =</p>
+                            <input type="text" placeholder="Answer" class="answer-box" id="answer-box8">
+                            <input type="submit" value="Check" class="answer-submit" id="check-button8">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 </body>
 
