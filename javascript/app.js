@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-    // jQuery methods go here...
-
     $('.scroll-to-about').click(function() {
         var nextSection = $('#about');
         $('html, body').animate({
@@ -40,9 +38,23 @@ $(document).ready(function() {
         $(this).css("border-style", "none");
     });
 
+    function shakeDiv(divSelector) {
 
+        var l = 10;
+        for (var i = 0; i <= 10; i++) {
+            $(divSelector).animate({
+                'margin-left': '+=' + (l = -l) + 'px',
+                'margin-right': '-=' + l + 'px'
+            }, 30, function() {
+                $(divSelector).css('margin-left', '');
+                $(divSelector).css('margin-right', '');
+            });
+        }
+
+    }
 
     $(".answer-submit").click(function(event) {
+
         var selected = this.id;
         var num = selected[selected.length - 1];
         var selectedId = "#" + num;
@@ -50,16 +62,37 @@ $(document).ready(function() {
         var answerId = "#answer-box" + num;
         var answer = $(answerId).val();
 
-        if (answer == 17) { //hard coded for now
+        var index = parseInt(num) - 1;
+        var correctAnswers = [8, 13, 3, -11, 47, 22, 3, 69];
+
+        if (parseInt(answer) == correctAnswers[index]) {
+            const previouslyCompleted = parseInt($('text#completed-count')[0].innerHTML);
+            const nowCompleted = previouslyCompleted + 1;
+            $('text#completed-count')[0].innerHTML = nowCompleted;
             $(selectedId).animate({ opacity: 0 }, { duration: "slow" });
+
+            //when finished with all of them
+            if (nowCompleted == correctAnswers.length) {
+                setTimeout(function() {
+                    $('.exercise-modal > .modal-contents').addClass('success');
+                    $('.exercise-modal').addClass('active');
+                    $('.exercise-modal > .modal-contents').empty();
+                    $('.exercise-modal > .modal-contents').append("<h1>Congrats, you're finished!</h1>");
+                    $('.exercise-modal > .modal-contents').append("<h3>What next?</h3>");
+                    $('.exercise-modal > .modal-contents').append("<div class='next'><a class='close-modal'>View Image</a><span>  |  <a href='./collections.html'>My Collection</a><span>  |  </span><a href='./exercise.html'>Next Exercise</a></div>");
+                    $('.next a.close-modal').on('click', function() {
+                        $('.exercise-modal > .modal-contents').removeClass('success');
+                        $('.exercise-modal').removeClass('active');
+                        $('.exercise-modal > .modal-contents').empty();
+                    });
+                }, 1000);
+            };
         } else {
             var answerBoxId = "#answer-box" + num;
             var answerBox = $(answerBoxId)[0];
             answerBox.style.borderStyle = "none";
             answerBox.style.border = "1px solid #E52F4F";
             $(answerBoxId).effect("shake", { distance: 5, times: 3 }, 500)
-
-
         }
 
         event.preventDefault();

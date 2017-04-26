@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis:300,400,500,600&subset=latin-ext);
 .exercise {
     padding: 25px 50px;
-    border: black thin solid;
 }
 
 .left,
@@ -44,14 +43,6 @@
 
 #exercise-progess {}
 
-#cheetah {
-    padding: 0;
-    margin: 0 auto;
-    max-height: 100%;
-    max-width: 100%;
-    box-shadow: 0px 0px 2px 2px lightgrey;
-}
-
 .game-container {
     position: relative;
     max-height: 540px;
@@ -59,6 +50,59 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+}
+#exercise-img {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    max-height: 100%;
+    max-width: 100%;
+    box-shadow: 0px 0px 2px 2px lightgrey;
+}
+.exercise-content.exercise-modal {
+    pointer-events: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+}
+
+.exercise-content.exercise-modal.active {
+    z-index: 1;
+    pointer-events: initial;
+}
+
+.modal-contents {
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 30%;
+    width: 30%;
+    box-shadow: 0px 0px 2px 2px grey;
+    background: white;
+}
+
+.modal-contents.failure {
+    color: red;
+}
+
+.modal-contents.success {
+    color: green;
+    height: 50%;
+    width: 50%;
+}
+
+
+.modal-contents.success > .next a {
+    text-decoration: none;
+    color: green;
+}
+
+.modal-contents.success > .next a:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .exercise-content {
@@ -78,7 +122,7 @@
 
 .exercise-problem {
     padding: 15px;
-    height: 25%;
+    height: 100%;
     box-shadow: 0px 0px 2px 2px grey;
     background: white;
     text-align: left;
@@ -87,6 +131,7 @@
     overflow: scroll;
     position: relative;
 }
+
 
 .exercise-problem .answer-box {
     height: 40px;
@@ -99,6 +144,10 @@
 .exercise-problem p {
     color: #465568;
     font-size: 25px;
+}
+
+.incorrect {
+    border-color: red;
 }
 
 input[type=submit] {
