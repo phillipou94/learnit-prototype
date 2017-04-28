@@ -99,5 +99,17 @@ $(document).ready(function() {
 
     });
 
+    $(".answer-box").focus(function(event) {
+        var id = event.target.offsetParent.id;
+        console.log($("#check-button" + id))
+        $("#check-button" + id)[0].style.visibility = "visible";
+    });
+    $(".answer-box").blur(function(event) {
+        var id = event.target.offsetParent.id;
+        $("#check-button" + id)[0].style.visibility = "hidden";
+    });
+
+
+
 
 });

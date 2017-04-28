@@ -51,6 +51,7 @@
     margin-right: auto;
     margin-top: 10px;
 }
+
 #exercise-img {
     position: relative;
     padding: 0;
@@ -59,6 +60,7 @@
     max-width: 100%;
     box-shadow: 0px 0px 2px 2px lightgrey;
 }
+
 .exercise-content.exercise-modal {
     pointer-events: none;
     align-items: center;
@@ -94,13 +96,12 @@
     width: 50%;
 }
 
-
-.modal-contents.success > .next a {
+.modal-contents.success>.next a {
     text-decoration: none;
     color: green;
 }
 
-.modal-contents.success > .next a:hover {
+.modal-contents.success>.next a:hover {
     text-decoration: underline;
     cursor: pointer;
 }
@@ -132,7 +133,6 @@
     position: relative;
 }
 
-
 .exercise-problem .answer-box {
     height: 40px;
     font-size: 20px;
@@ -159,6 +159,7 @@ input[type=submit] {
     float: right;
     margin-right: 20px;
     position: relative;
+    visibility: hidden;
 }
 
 input[type=submit]:hover {
