@@ -2,9 +2,11 @@ from flask import Flask
 from flask_restful import Api, Resource, request
 from flask_login import LoginManager, login_required, fresh_login_required, login_user, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object('config')
+CORS(app)
 api = Api(app)
 login_manager = LoginManager(app)
 db = SQLAlchemy(app)
@@ -13,9 +15,10 @@ import models
 
 class Signup(Resource):
     def post(self):
-        username = request.form['username']
-        password = request.form['password']
-        name = request.form['name']
+        json_data = request.get_json()
+        username = json_data['username']
+        password = json_data['password']
+        name = json_data['name']
         print 'Hello' + username
         new_user = models.User.create_user(name, username, password)
         if new_user == False:
@@ -25,8 +28,9 @@ class Signup(Resource):
 
 class Signin(Resource):
     def post(self):
-        username = request.form['username']
-        password = request.form['password']
+        json_data = request.get_json()
+        username = json_data['username']
+        password = json_data['password']
         _user = models.User.query.filter_by(username=username).first()
         if _user:
             if models.User.check_password(password, _user.hashed_password):
