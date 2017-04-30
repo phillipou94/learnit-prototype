@@ -15,6 +15,9 @@ $(document).ready(function() {
 
         Request.POST(req, "signin", function(response) {
             if (response && response.id) {
+                sessionStorage.setItem("id", response.id);
+                sessionStorage.setItem("username", response.username);
+                sessionStorage.setItem("password", response.password);
                 window.location.href = "main.html";
             } else {
                 var $newdiv = document.createElement('div')
@@ -43,7 +46,9 @@ $(document).ready(function() {
         $("#signup-form").append(loader);
         Request.POST(req, "signup", function(response) {
             if (response && response.id) {
-                console.log(response)
+                sessionStorage.setItem("id", response.id);
+                sessionStorage.setItem("username", response.username);
+                sessionStorage.setItem("password", response.password);
                 window.location.href = "main.html";
             } else {
                 var $newdiv = document.createElement('div')
@@ -51,7 +56,7 @@ $(document).ready(function() {
                 $newdiv.innerHTML = '<p> This username has already been taken </p>';
                 $("body").append($newdiv)
             }
-            document.getElementById("signup-form").removeChild(loader)
+            document.getElementById("signup-form").removeChild(loader);
             $("#signup-form").append(signUpButton);
         })
 
