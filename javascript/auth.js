@@ -28,4 +28,33 @@ $(document).ready(function() {
 
 
     });
+
+    $('#signup-form').submit(function(event) {
+        event.preventDefault();
+        var username = event.target.username.value;
+        var name = event.target.name.value;
+        var password = event.target.password.value;
+        var req = { username: username, password: password, name: name };
+        var signUpButton = document.getElementById("signup-button");
+        var loader = document.createElement('div');
+        loader.className = "loader-container";
+        loader.innerHTML = '<div class="loader"></div>'
+        document.getElementById("signup-form").removeChild(signUpButton)
+        $("#signup-form").append(loader);
+        Request.POST(req, "signup", function(response) {
+            if (response && response.id) {
+                console.log(response)
+                window.location.href = "main.html";
+            } else {
+                var $newdiv = document.createElement('div')
+                $newdiv.className = "error-message";
+                $newdiv.innerHTML = '<p> This username has already been taken </p>';
+                $("body").append($newdiv)
+            }
+            document.getElementById("signup-form").removeChild(loader)
+            $("#signup-form").append(signUpButton);
+        })
+
+
+    });
 })
