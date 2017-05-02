@@ -31,6 +31,16 @@ Request = function() {
             })
     };
 
+    that.PUT = function(req, path, completion) {
+        var url = BASE_URL + path + "/"
+        $.ajax({
+            url: url,
+            data: req,
+            type: 'PUT',
+            success: completion
+        });
+    };
+
     that.DELETE = function(path, completion) {
         var url = BASE_URL + path + "/"
         $.ajax({
