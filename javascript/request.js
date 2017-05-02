@@ -31,6 +31,16 @@ Request = function() {
             })
     };
 
+    that.DELETE = function(path, completion) {
+        var url = BASE_URL + path + "/"
+        $.ajax({
+            url: url,
+            type: 'DELETE',
+            success: completion
+        });
+    };
+
+
     Object.freeze(that);
     return that;
 }

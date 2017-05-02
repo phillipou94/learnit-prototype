@@ -109,6 +109,12 @@ $(document).ready(function() {
         $("#check-button" + id)[0].style.visibility = "hidden";
     });
 
+    $(".logout-button").click(function() {
+        Request.DELETE("signin", function() {
+            window.location.href = "login.html";
+        });
+    });
+
 
 
 
