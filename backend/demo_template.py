@@ -1,7 +1,9 @@
+import datetime
 template = [
     {
         'name': 'Addition 1',
         'path_to_img': '/assets/cheetah.png',
+        'due_date': datetime.datetime(2017, 5, 1),
         'problems': [
             {
                 'contents': '6 + 9 =',

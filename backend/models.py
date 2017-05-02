@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
                     path_to_img=exercise['path_to_img'],
                     name=exercise['name'],
                     number=i+1,
+                    due_date=exercise['due_date'],
                     user_id=self.id
                 )
             db.session.add(new_exercise)
@@ -37,8 +38,10 @@ class User(db.Model, UserMixin):
                 db.session.add(new_problem)
 
     def home_json(self):
-        exercises = [exercise.home_json() for exercise in self.exercises.all()]
-        return {'name': self.name, 'username': self.username, 'id': self.id, 'exercises': exercises}
+        exercises_list = self.exercises.all()
+        exercises = [exercise.home_json() for exercise in exercises_list]
+        completed_exercises = filter(lambda curr: curr.completed_problems() == curr.total_problems(), exercises_list)
+        return {'name': self.name, 'username': self.username, 'id': self.id, 'exercises': exercises, 'completed_exercises': len(completed_exercises)}
 
     def collection_json(self):
         completed_exercises = filter(lambda exercise: exercise.completed(), self.exercises.all())
@@ -86,6 +89,7 @@ class Exercise(db.Model):
 
     name = db.Column(db.String(100))
     number = db.Column(db.Integer)
+    due_date = db.Column(db.DateTime)
     path_to_img = db.Column(db.String(750))
 
     problems = db.relationship('Problem', backref='exercise', lazy='dynamic')
@@ -104,7 +108,7 @@ class Exercise(db.Model):
         return {'id': self.id, 'name': self.name, 'number': self.number, 'problems': problems, 'path_to_img': self.path_to_img}
 
     def home_json(self):
-        return {'id': self.id, 'name': self.name, 'number': self.number, 'total_problems': self.total_problems(), 'completed_problems': self.completed_problems()}
+        return {'id': self.id, 'name': self.name, 'number': self.number, 'due_date': self.due_date, 'total_problems': self.total_problems(), 'completed_problems': self.completed_problems()}
 
     def collection_json(self):
         return {'path_to_img': self.path_to_img, 'name': self.name, 'number': self.number, 'id': self.id}

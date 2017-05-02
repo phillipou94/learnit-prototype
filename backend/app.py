@@ -6,7 +6,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object('config')
-CORS(app)
+CORS(app, supports_credentials=True)
 api = Api(app)
 login_manager = LoginManager(app)
 db = SQLAlchemy(app)
@@ -15,10 +15,10 @@ import models
 
 class Signup(Resource):
     def post(self):
-        json_data = request.get_json()
+        json_data = request.form
         username = json_data['username']
         password = json_data['password']
-        name = json_data['name']
+        name = json_data['password']
         print 'Hello' + username
         new_user = models.User.create_user(name, username, password)
         if new_user == False:
@@ -28,7 +28,7 @@ class Signup(Resource):
 
 class Signin(Resource):
     def post(self):
-        json_data = request.get_json()
+        json_data = request.form
         username = json_data['username']
         password = json_data['password']
         _user = models.User.query.filter_by(username=username).first()
@@ -37,7 +37,7 @@ class Signin(Resource):
                 login_user(_user)
                 return {'id': _user.id, 'username': _user.username, "name": _user.name}, 200
         else:
-            return {'error', 'There was an error signing in'}, 400
+            return {'error': 'There was an error signing in'}, 400
 
     @login_required
     def delete(self):
