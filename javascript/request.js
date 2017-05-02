@@ -1,6 +1,13 @@
 Request = function() {
     var that = Object.create(Request.prototype);
-    var BASE_URL = "http://vendnue.com/learnit/"
+    var BASE_URL = "http://vendnue.com/learnit/";
+
+    $.ajaxSetup({
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        }
+    });
 
     that.POST = function(req, path, completion) {
         var url = BASE_URL + path + "/"

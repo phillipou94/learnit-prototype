@@ -1,0 +1,9 @@
+<div class="table-header">
+    <h1> Exercises </h1>
+    <div class="progress-container">
+        {{> main_progress_container progress=progress}}
+    </div>
+</div>
+{{#each exercises}}
+    {{> main_exercise_row exercise=this}}
+{{/each}}
