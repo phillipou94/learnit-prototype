@@ -54,7 +54,7 @@ $(document).ready(function() {
     }
 
     $(".answer-submit").click(function(event) {
-
+        event.preventDefault();
         var selected = this.id;
         var num = selected[selected.length - 1];
         var selectedId = "#" + num;
@@ -97,9 +97,11 @@ $(document).ready(function() {
             answerBox.style.borderStyle = "none";
             answerBox.style.border = "1px solid #E52F4F";
             $(answerBoxId).effect("shake", { distance: 5, times: 3 }, 500)
+            $(answerBoxId).focus();
+            $("#check-button" + num)[0].style.visibility = "visible";
         }
 
-        event.preventDefault();
+
 
     });
 
