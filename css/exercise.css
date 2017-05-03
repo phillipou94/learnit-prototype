@@ -184,3 +184,54 @@ input:focus {
 .exercise-problem.solved {
     opacity: 0;
 }
+
+.curl {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    background: linear-gradient( 135deg, rgba(255, 0, 0, 0), rgba(255, 0, 0, 0) 45%, #ddd 50%, #aaa 50%, #bbb 56%, #ccc 62%, #f3f3f3 80%, #fff 100%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    transition: all .9s ease;
+    z-index: 10;
+}
+
+.image-snippet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    z-index: 9;
+}
+
+.image-snippet img {
+    width: 400px;
+    height: 300px;
+}
+
+.curl:before,
+.curl:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 12.5%;
+    bottom: 5.8%;
+    width: 70%;
+    max-width: 300px;
+    max-height: 100px;
+    height: 55%;
+    box-shadow: 0 12px 15px rgba(0, 0, 0, .3);
+    transform: skew(-10deg) rotate(-6deg);
+}
+
+.curl:after {
+    left: auto;
+    right: 5.8%;
+    bottom: auto;
+    top: 14.16%;
+    transform: skew(-15deg) rotate(-84deg);
+}

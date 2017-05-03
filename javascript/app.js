@@ -69,7 +69,11 @@ $(document).ready(function() {
             const previouslyCompleted = parseInt($('text#completed-count')[0].innerHTML);
             const nowCompleted = previouslyCompleted + 1;
             $('text#completed-count')[0].innerHTML = nowCompleted;
+            $('#image-snippet' + num).css("visibility", "hidden");
+            $('#curl' + num).css("width", "240px");
+            $('#curl' + num).css("height", "240px");
             $(selectedId).animate({ opacity: 0 }, { duration: "slow" });
+
 
             //when finished with all of them
             if (nowCompleted == correctAnswers.length) {
