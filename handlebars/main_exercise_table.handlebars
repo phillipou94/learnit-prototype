@@ -3,7 +3,18 @@
     <div class="progress-container">
         {{> main_progress_container progress=progress}}
     </div>
+    <div class="dropdown">
+        <span id="sort-title">Sort by Due Date</span>
+        <img src="./assets/DropdownIndicator.svg" />
+        <div class="dropdown-content">
+            <p class="dropdown-option">Due Date</p>
+            <p class="dropdown-option">Incomplete</p>
+            <p class="dropdown-option">Completed</p>
+        </div>
+    </div>
 </div>
+
+
 {{#each exercises}}
     {{> main_exercise_row exercise=this}}
 {{/each}}
