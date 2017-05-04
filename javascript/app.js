@@ -54,7 +54,7 @@ $(document).ready(function() {
     }
 
     $(".answer-submit").click(function(event) {
-
+        event.preventDefault();
         var selected = this.id;
         var num = selected[selected.length - 1];
         var selectedId = "#" + num;
@@ -69,7 +69,11 @@ $(document).ready(function() {
             const previouslyCompleted = parseInt($('text#completed-count')[0].innerHTML);
             const nowCompleted = previouslyCompleted + 1;
             $('text#completed-count')[0].innerHTML = nowCompleted;
+            $(selectedId + " .image-snippet").css("visibility", "hidden");
+            $(selectedId + " .curl").css("width", "240px");
+            $(selectedId + " .curl").css("height", "240px");
             $(selectedId).animate({ opacity: 0 }, { duration: "slow" });
+
 
             //when finished with all of them
             if (nowCompleted == correctAnswers.length) {
@@ -93,9 +97,11 @@ $(document).ready(function() {
             answerBox.style.borderStyle = "none";
             answerBox.style.border = "1px solid #E52F4F";
             $(answerBoxId).effect("shake", { distance: 5, times: 3 }, 500)
+            $(answerBoxId).focus();
+            $("#check-button" + num)[0].style.visibility = "visible";
         }
 
-        event.preventDefault();
+
 
     });
 
