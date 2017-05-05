@@ -108,7 +108,10 @@ class Exercise(db.Model):
         return {'id': self.id, 'name': self.name, 'number': self.number, 'problems': problems, 'path_to_img': self.path_to_img}
 
     def home_json(self):
-        return {'id': self.id, 'name': self.name, 'number': self.number, 'due_date': self.due_date, 'total_problems': self.total_problems(), 'completed_problems': self.completed_problems()}
+        due_date = None
+        if self.due_date:
+            due_date = self.due_date.strftime('%B %d, %Y')
+        return {'id': self.id, 'name': self.name, 'number': self.number, 'due_date': due_date, 'total_problems': self.total_problems(), 'completed_problems': self.completed_problems()}
 
     def collection_json(self):
         return {'path_to_img': self.path_to_img, 'name': self.name, 'number': self.number, 'id': self.id}
