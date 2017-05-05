@@ -18,7 +18,7 @@ class Signup(Resource):
         json_data = request.form
         username = json_data['username']
         password = json_data['password']
-        name = json_data['password']
+        name = json_data['name']
         print 'Hello' + username
         new_user = models.User.create_user(name, username, password)
         if new_user == False:
@@ -86,6 +86,6 @@ class Collections(Resource):
 api.add_resource(Signup, '/signup/')
 api.add_resource(Signin, '/signin/')
 api.add_resource(Home, '/home/')
-api.add_resource(Exercise, '/exercises/<int:id>')
-api.add_resource(Problem, '/problems/<int:id>')
+api.add_resource(Exercise, '/exercises/<int:id>/')
+api.add_resource(Problem, '/problems/<int:id>/')
 api.add_resource(Collections, '/collections/')
