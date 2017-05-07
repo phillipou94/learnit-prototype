@@ -1,4 +1,4 @@
-<img id="exercise-img" src="{{path_to_img}}">
+<img id="exercise-img" src=".{{path_to_img}}">
 <div class="exercise-content exercise-modal">
     <div class="modal-contents">
     </div>
@@ -6,12 +6,12 @@
 <div class="exercise-content">
     <div class="left">
         {{#each problems_left}}
-            {{> exercise_problem problem=this path_to_img=path_to_img}}
+            {{> exercise_problem problem=this path_to_img=../path_to_img}}
         {{/each}}
     </div>
     <div class="right">
         {{#each problems_right}}
-            {{> exercise_problem problem=this path_to_img=path_to_img}}
+            {{> exercise_problem problem=this path_to_img=../path_to_img}}
         {{/each}}
     </div>
 </div>
