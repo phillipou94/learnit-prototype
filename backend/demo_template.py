@@ -2,7 +2,7 @@ import datetime
 template = [
     {
         'name': 'Addition I',
-        'path_to_img': './assets/red-car.png',
+        'path_to_img': '/assets/red-car.png',
         'due_date': datetime.datetime(2017, 5, 1),
         'problems': [
             {
@@ -42,14 +42,14 @@ template = [
             },
             {
                 'contents': '14 + 13 =',
-                'answer': 15,
+                'answer': 27,
                 'hint': 'Stack the numbers and add straight down.'
             }
         ]
-
-
+    },
+    {
         'name': 'Addition II',
-        'path_to_img': './assets/andrew-luck.png',
+        'path_to_img': '/assets/andrew-luck.png',
         'due_date': datetime.datetime(2017, 5, 2),
         'problems': [
             {
@@ -93,10 +93,10 @@ template = [
                 'hint': 'Stack the numbers and add straight down.'
             }
         ]
-
-
+    },
+    {
         'name': 'Substraction I',
-        'path_to_img': './assets/cheetah.png',
+        'path_to_img': '/assets/cheetah.png',
         'due_date': datetime.datetime(2017, 5, 3),
         'problems': [
             {
@@ -140,14 +140,5 @@ template = [
                 'hint': '= 100 - 31 = 69'
             }
         ]
-
-
-
-
-
-
     }
-
-
-
 ]
