@@ -1,11 +1,15 @@
+{{#if problem.completed}}
+<div class="exercise-problem" id="{{problem.number}}" style="visibility:hidden;">
+{{else}}
 <div class="exercise-problem" id="{{problem.number}}">
+{{/if}}
     <div class="image-snippet" id="image-snippet{{problem.number}}">
-        <img src="{{path_to_img}}" />
+        <img src=".{{path_to_img}}" />
     </div>
     <div class="curl" id="curl{{problem.number}}"></div>
     <form>
         <p>{{problem.contents}}</p>
         <input type="text" placeholder="Answer" class="answer-box" id="answer-box{{problem.number}}">
-        <input type="submit" value="Check" class="answer-submit" id="check-button1{{problem.number}}">
+        <input type="submit" value="Check" class="answer-submit" id="check-button{{problem.number}}">
     </form>
 </div>
