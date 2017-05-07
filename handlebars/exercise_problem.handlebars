@@ -6,6 +6,7 @@
     <form>
         <p>{{problem.contents}}</p>
         <input type="text" placeholder="Answer" class="answer-box" id="answer-box{{problem.number}}">
-        <input type="submit" value="Check" class="answer-submit" id="check-button1{{problem.number}}">
+        <input type="submit" value="Check" class="answer-submit" id="check-button{{problem.number}}">
+        <input type="hidden" name="answer" value={{problem.answer}} id="answer{{problem.number}}">
     </form>
 </div>

@@ -45,8 +45,8 @@
 
 .game-container {
     position: relative;
-    max-height: 540px;
-    max-width: 960px;
+    height: 540px;
+    width: 960px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
