@@ -141,9 +141,20 @@
     position: absolute;
 }
 
-.exercise-problem p {
+.exercise-problem .content {
     color: #465568;
     font-size: 25px;
+}
+
+.hint {
+    color: #465568;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.hint .show {
+    color: #F26B5C;
 }
 
 .incorrect {

@@ -32,7 +32,7 @@ Request = function() {
     };
 
     that.PUT = function(req, path, completion) {
-        var url = BASE_URL + path + "/"
+        var url = BASE_URL + path
         $.ajax({
             url: url,
             data: req,

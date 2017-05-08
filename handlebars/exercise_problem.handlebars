@@ -8,9 +8,11 @@
     </div>
     <div class="curl" id="curl{{problem.number}}"></div>
     <form>
-        <p>{{problem.contents}}</p>
+        <p class="content">{{problem.contents}}</p>
         <input type="text" placeholder="Answer" class="answer-box" id="answer-box{{problem.number}}">
         <input type="submit" value="Check" class="answer-submit" id="check-button{{problem.number}}">
         <input type="hidden" name="answer" value={{problem.answer}} id="answer{{problem.number}}">
+        <input type="hidden" name="problem_hint" value={{problem.hint}} id="problem_hint{{problem.number}}">
     </form>
+    <p class= "hint" id="hint{{problem.number}}">need a hint?</p>
 </div>

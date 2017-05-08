@@ -1,12 +1,12 @@
 var Request = new Request();
-$( document ).ready(function(){
+$(document).ready(function() {
     Handlebars.partials = Handlebars.templates;
 
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
 
         for (i = 0; i < sURLVariables.length; i++) {
             sParameterName = sURLVariables[i].split('=');
@@ -17,15 +17,13 @@ $( document ).ready(function(){
     };
 
     var exerciseId = getUrlParameter('id');
-    console.log(exerciseId);
-    if ( !exerciseId ){location.href = './main.html';}
+    if (!exerciseId) { location.href = './main.html'; }
 
-    Request.GET('exercises/' + exerciseId.toString(), function(response){
-        if (response && !response.error){
+    Request.GET('exercises/' + exerciseId.toString(), function(response) {
+        if (response && !response.error) {
 
-            var completedCount = response.problems.reduce(function(accum, curr){
-                if (curr.completed){ return accum + 1;}
-                else { return accum; }
+            var completedCount = response.problems.reduce(function(accum, curr) {
+                if (curr.completed) { return accum + 1; } else { return accum; }
             }, 0);
 
             var titleHTML = Handlebars.templates['exercise_title']({
@@ -34,8 +32,8 @@ $( document ).ready(function(){
             });
             $('.exercise-title').html(titleHTML);
 
-            var problemsLeft = response.problems.slice(0,4)
-            var problemsRight = response.problems.slice(4,8)
+            var problemsLeft = response.problems.slice(0, 4)
+            var problemsRight = response.problems.slice(4, 8)
 
             var exerciseGameContainerHTML = Handlebars.templates['exercise_game_container']({
                 path_to_img: response.path_to_img,
@@ -55,7 +53,7 @@ $( document ).ready(function(){
                 var answer = $(answerId).val();
 
                 var index = parseInt(num) - 1;
-                var correctAnswers = response.problems.map(function(curr){return curr.answer;});
+                var correctAnswers = response.problems.map(function(curr) { return curr.answer; });
 
                 if (parseInt(answer) == correctAnswers[index]) {
                     const previouslyCompleted = parseInt($('text#completed-count')[0].innerHTML);
@@ -69,6 +67,10 @@ $( document ).ready(function(){
 
                     //when finished with all of them
                     if (nowCompleted == correctAnswers.length) {
+                        Request.PUT({}, "problems/" + exerciseId.toString(), function(data) {
+                            console.log("PUT REQUEST SUCCEEDED")
+                            console.log(data)
+                        });
                         setTimeout(function() {
                             $('.exercise-modal > .modal-contents').addClass('success');
                             $('.exercise-modal').addClass('active');
@@ -113,10 +115,21 @@ $( document ).ready(function(){
                 });
             });
 
+            $(".hint").click(function(event) {
+                var num = event.target.offsetParent.id;
+                var id = event.target.id;
+                var hint = $("#problem_hint" + num)[0].value
+                $("#" + id).text("hint: " + hint)
+                $("#" + id).addClass('show');
+                $("#" + id).css('color', "#F26B5C");
+                $("#" + id).css('text-decoration', "none");
+                $("#" + id).css('cursor', "default");
+            });
+
         } else {
-            if (response.status == 401 && response.error){
+            if (response.status == 401 && response.error) {
                 console.log(response);
-                location.href='./login.html';
+                location.href = './login.html';
             } else {
                 console.log(response);
             }
