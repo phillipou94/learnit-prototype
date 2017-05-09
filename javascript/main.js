@@ -1,4 +1,10 @@
 var Request = new Request();
+
+var numDaysBetween = function(d1, d2) {
+    var diff = d2.getTime() - d1.getTime();
+    return diff / (1000 * 60 * 60 * 24);
+};
+
 $(document).ready(function() {
     Handlebars.partials = Handlebars.templates;
     var loader = document.createElement('div');
@@ -15,6 +21,17 @@ $(document).ready(function() {
                     return (curr.completed_problems == curr.total_problems);
                 }
             );
+
+            response.exercises.forEach(function(exercise) {
+                var today = new Date();
+                var exercise_due = new Date(exercise.due_date)
+                var days_till_due = numDaysBetween(today, exercise_due);
+                var late = days_till_due < 0;
+                var due_tomorrow = days_till_due > 0 && days_till_due < 1;
+                exercise.late = late;
+                exercise.due_tomorrow = due_tomorrow;
+
+            })
 
             var subheaderHTML = Handlebars.templates['main_subheader_text']({
                 name: response.name,

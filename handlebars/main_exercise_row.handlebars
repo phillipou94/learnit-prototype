@@ -13,7 +13,16 @@
             <p class="exercise-number">Exercise {{exercise.number}}</p>
             <p class="exercise-title">{{exercise.name}}</p>
         </div>
-        <p class="due-date">Due {{exercise.due_date}}</p>
+        {{#if exercise.due_tomorrow}}
+            <p class="due-date-tomorrow">Due Tomorrow - {{exercise.due_date}}</p>
+        {{else}}
+            {{#if exercise.late}}
+                <p class="late-due-date">{{exercise.due_date}}</p>
+            {{else}}
+                <p class="due-date">Due {{exercise.due_date}}</p>
+            {{/if}}
+            
+        {{/if}}
     </div>
 </a>
 
