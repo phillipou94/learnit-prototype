@@ -1,6 +1,10 @@
 var Request = new Request();
 $(document).ready(function() {
     Handlebars.partials = Handlebars.templates;
+    var loader = document.createElement('div');
+    loader.className = "loader-container";
+    loader.innerHTML = '<div class="loader"></div>'
+    $(".main-body").append(loader)
 
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -20,6 +24,7 @@ $(document).ready(function() {
     if (!exerciseId) { location.href = './main.html'; }
 
     Request.GET('exercises/' + exerciseId.toString(), function(response) {
+        $(".loader-container").remove();
         if (response && !response.error) {
 
             var completedCount = response.problems.reduce(function(accum, curr) {
