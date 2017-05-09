@@ -32,6 +32,7 @@ $(document).ready(function() {
     Request.GET('collections', function(response) {
         $(".loader-container").remove();
         var collections = response.collections;
+        // collections = [{ path_to_img: "./assets/cheetah.png", name: "Exercise I - Addition I" }]
         var n = collections.length
         if (n && n > 0) {
             $("#message").text("Here are the photos you've collected!")

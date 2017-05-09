@@ -276,8 +276,8 @@ button:hover {
 .image-title {
     position: absolute;
     bottom: 20px;
-    left: 10px;
+    left: 20px;
+    padding: 10px;
     color: white;
-    background: rgb(0, 0, 0, 0.8);
-    width: 80%;
+    background: rgba(0, 0, 0, 0.6);
 }
