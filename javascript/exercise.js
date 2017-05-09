@@ -1,6 +1,7 @@
 var Request = new Request();
 $(document).ready(function() {
     Handlebars.partials = Handlebars.templates;
+
     var loader = document.createElement('div');
     loader.className = "loader-container";
     loader.innerHTML = '<div class="loader"></div>'
@@ -18,6 +19,11 @@ $(document).ready(function() {
                 return sParameterName[1] === undefined ? true : sParameterName[1];
             }
         }
+    };
+
+    var submitCompletedProblem = function(problemId){
+        Request.PUT('problems/' + problemId.toString(), function(response){
+        })
     };
 
     var exerciseId = getUrlParameter('id');
@@ -39,6 +45,7 @@ $(document).ready(function() {
 
             var problemsLeft = response.problems.slice(0, 4)
             var problemsRight = response.problems.slice(4, 8)
+            var correctAnswers = response.problems.map(function(curr) { return curr.answer; });
 
             var exerciseGameContainerHTML = Handlebars.templates['exercise_game_container']({
                 path_to_img: response.path_to_img,
@@ -56,11 +63,12 @@ $(document).ready(function() {
 
                 var answerId = "#answer-box" + num;
                 var answer = $(answerId).val();
+                var problemId = parseInt($(answerId).data('problem-id')).toString();
 
                 var index = parseInt(num) - 1;
-                var correctAnswers = response.problems.map(function(curr) { return curr.answer; });
 
                 if (parseInt(answer) == correctAnswers[index]) {
+                    submitCompletedProblem(problemId);
                     const previouslyCompleted = parseInt($('text#completed-count')[0].innerHTML);
                     const nowCompleted = previouslyCompleted + 1;
                     $('text#completed-count')[0].innerHTML = nowCompleted;
@@ -72,10 +80,7 @@ $(document).ready(function() {
 
                     //when finished with all of them
                     if (nowCompleted == correctAnswers.length) {
-                        Request.PUT({}, "problems/" + exerciseId.toString(), function(data) {
-                            console.log("PUT REQUEST SUCCEEDED")
-                            console.log(data)
-                        });
+
                         setTimeout(function() {
                             $('.exercise-modal > .modal-contents').addClass('success');
                             $('.exercise-modal').addClass('active');
@@ -106,7 +111,6 @@ $(document).ready(function() {
 
             $(".answer-box").focus(function(event) {
                 var id = event.target.offsetParent.id;
-                console.log($("#check-button" + id))
                 $("#check-button" + id)[0].style.visibility = "visible";
             });
             $(".answer-box").blur(function(event) {

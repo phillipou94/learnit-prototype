@@ -6,10 +6,21 @@ $(document).ready(function() {
     loader.innerHTML = '<div class="loader"></div>'
     $(".main-body").append(loader)
 
-    Request.GET('home', function(response) {
+    var getHomeCompletionHandler = function(response) {
 
         if (response && !response.error) {
             $(".loader-container").remove();
+            response.exercises = response.exercises.map(function(curr){
+                if (curr.completed_problems == curr.total_problems){
+                    curr.completed = true;
+                } else if (curr.completed_problems > 0){
+                    curr.inprogress = true;
+                    var progressPercent = Math.floor((curr.completed_problems / curr.total_problems) * 100.0);
+                    curr.percent = progressPercent;
+                    curr.decimal = (progressPercent/100.0);
+                }
+                return curr;
+            })
             var completedExercises = response.exercises.filter(
                 function(curr) {
                     return (curr.completed_problems == curr.total_problems);
@@ -25,7 +36,7 @@ $(document).ready(function() {
             var progressPercent = Math.floor((completedExercises.length / response.exercises.length) * 100.0);
             var progressData = {
                 percent: progressPercent,
-                value: progressPercent / 100.0
+                decimal: progressPercent / 100.0
             };
             var exerciseTabelHTML = Handlebars.templates['main_exercise_table']({
                 exercises: response.exercises,
@@ -72,14 +83,22 @@ $(document).ready(function() {
             });
 
         } else {
-            $(".loader-container").remove();
             if (response.status == 401 && response.error) {
-                console.log(response);
                 location.href = './login.html';
+            }
+            else if (response.status == 500 && (retryCount <= retryMax)){
+                retryCount += 1;
+                console.log('Retried GET /home/' + retryCount.toString() + ' times.');
+                Request.GET('home', getHomeCompletionHandler);
+            } else {
+                // TODO there was an error with the server probably
             }
         }
 
-    });
+    };
 
+    var retryMax = 10;
+    var retryCount = 0;
+    Request.GET('home', getHomeCompletionHandler);
 
 });

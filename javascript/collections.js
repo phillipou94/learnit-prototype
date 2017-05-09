@@ -29,52 +29,62 @@ $(document).ready(function() {
     loader.innerHTML = '<div class="loader"></div>'
     $(".main-body").append(loader)
 
-    Request.GET('collections', function(response) {
-        $(".loader-container").remove();
-        var collections = response.collections;
-        // collections = [{ path_to_img: "./assets/cheetah.png", name: "Exercise I - Addition I" }]
-        var n = collections.length
-        if (n && n > 0) {
-            $("#message").text("Here are the photos you've collected!")
-            var collectionThumbnails = collections.map(function(collection) {
-                return collectionThumbnail(collection)
-            });
+    var getCollectionsCallback = function(response) {
 
-            var modalContents = collections.map(function(collection, index) {
-                return collectionModalContent(collection, index, n)
-            });
+        if (response && !response.error){
+            $(".loader-container").remove();
+            var collections = response.collections;
+            var n = collections.length
+            if (n && n > 0) {
+                $("#message").text("Here are the photos you've collected!")
+                var collectionThumbnails = collections.map(function(collection) {
+                    return collectionThumbnail(collection)
+                });
 
-            var collectionModalThumbnails = collections.map(function(collection, index) {
-                return collectionModalThumbnail(collection, index)
-            });
+                var modalContents = collections.map(function(collection, index) {
+                    return collectionModalContent(collection, index, n)
+                });
 
-            collectionThumbnails.forEach(function(thumbnail) {
-                $(".row").append(thumbnail)
-            })
+                var collectionModalThumbnails = collections.map(function(collection, index) {
+                    return collectionModalThumbnail(collection, index)
+                });
 
-            modalContents.forEach(function(modal) {
-                $(".modal-content").append(modal)
-            })
+                collectionThumbnails.forEach(function(thumbnail) {
+                    $(".row").append(thumbnail)
+                })
 
-            var buffer = '<a class="prev" onclick="plusSlides(-1)">&#10094;</a>' +
-                '<a class="next" onclick="plusSlides(1)">&#10095;</a>' +
+                modalContents.forEach(function(modal) {
+                    $(".modal-content").append(modal)
+                })
 
-                '<div class="caption-container">' +
-                '<p id="caption"></p>' +
-                '</div>'
+                var buffer = '<a class="prev" onclick="plusSlides(-1)">&#10094;</a>' +
+                    '<a class="next" onclick="plusSlides(1)">&#10095;</a>' +
 
-            $(".modal-content").append(buffer)
+                    '<div class="caption-container">' +
+                    '<p id="caption"></p>' +
+                    '</div>'
 
-            collectionModalThumbnails.forEach(function(thumbnail) {
-                $(".modal-content").append(thumbnail)
-            })
+                $(".modal-content").append(buffer)
+
+                collectionModalThumbnails.forEach(function(thumbnail) {
+                    $(".modal-content").append(thumbnail)
+                })
+            } else {
+                $("#message").text("Do some exercises to collect some photos!")
+            }
         } else {
-            $("#message").text("Do some exercises to collect some photos!")
+            if (response.status && response.status == 500 && (retryCount < retryMax)){
+                retryCount += 1;
+                console.log('Retried GET /collections/' + retryCount.toString() + ' times.');
+                Request.GET('collections', getCollectionsCallback);
+            } else {
+                // TODO unknown error, handle accordingly
+            }
         }
+    };
 
-
-
-
-    });
+    var retryMax = 10;
+    var retryCount = 0;
+    Request.GET('collections', getCollectionsCallback);
 
 });
