@@ -140,5 +140,240 @@ template = [
                 'hint': '= 100 - 31 = 69'
             }
         ]
-    }
+        },
+        {
+
+        'name': 'Substraction II',
+        'path_to_img': './assets/cheetah.png',
+        'due_date': datetime.datetime(2017, 5, 4),
+        'problems': [
+            {
+                'contents': '45 - 37 =',
+                'answer': 8,
+                'hint': '45 - 30 = 15'
+            },
+            {
+                'contents': '32 - 19  =',
+                'answer': 13,
+                'hint': '32 - 19 = 30 - 17'
+            },
+            {
+                'contents': '(8 + 7) - 12 =',
+                'answer': 3,
+                'hint': 'The answer is 3.'
+            },
+            {
+                'contents': '15 - 26 =',
+                'answer': -9,
+                'hint': '= - (26 - 15) = - 9'
+            },
+            {
+                'contents': '103 - 5 = 98',
+                'answer': 98,
+                'hint': 'Answer is 98'
+            },
+            {
+                'contents': '19 - (56 - 10) + 49',
+                'answer': 22,
+                'hint': '= 19 - 46 + 49 = 19 + 3 = 22 '
+            },
+            {
+                'contents': '300 - 270 =',
+                'answer': 30,
+                'hint': 'Answer is 30'
+            },
+            {
+                'contents': '100 - 16 - 15 =',
+                'answer': 69,
+                'hint': '= 100 - 31 = 69'
+            }
+        ]},
+
+        {'name': 'Multiplication I',
+        'path_to_img': './assets/cheetah.png',
+        'due_date': datetime.datetime(2017, 5, 5),
+        'problems': [
+            {
+                'contents': '45 - 37 =',
+                'answer': 8,
+                'hint': '45 - 30 = 15'
+            },
+            {
+                'contents': '32 - 19  =',
+                'answer': 13,
+                'hint': '32 - 19 = 30 - 17'
+            },
+            {
+                'contents': '(8 + 7) - 12 =',
+                'answer': 3,
+                'hint': 'The answer is 3.'
+            },
+            {
+                'contents': '15 - 26 =',
+                'answer': -9,
+                'hint': '= - (26 - 15) = - 9'
+            },
+            {
+                'contents': '103 - 5 = 98',
+                'answer': 98,
+                'hint': 'Answer is 98'
+            },
+            {
+                'contents': '19 - (56 - 10) + 49',
+                'answer': 22,
+                'hint': '= 19 - 46 + 49 = 19 + 3 = 22 '
+            },
+            {
+                'contents': '300 - 270 =',
+                'answer': 30,
+                'hint': 'Answer is 30'
+            },
+            {
+                'contents': '100 - 16 - 15 =',
+                'answer': 69,
+                'hint': '= 100 - 31 = 69'
+            }
+        ]
+        },
+        {
+        'name': 'Multiplication II',
+        'path_to_img': './assets/cheetah.png',
+        'due_date': datetime.datetime(2017, 5, 6),
+        'problems': [
+            {
+                'contents': '45 - 37 =',
+                'answer': 8,
+                'hint': '45 - 30 = 15'
+            },
+            {
+                'contents': '32 - 19  =',
+                'answer': 13,
+                'hint': '32 - 19 = 30 - 17'
+            },
+            {
+                'contents': '(8 + 7) - 12 =',
+                'answer': 3,
+                'hint': 'The answer is 3.'
+            },
+            {
+                'contents': '15 - 26 =',
+                'answer': -9,
+                'hint': '= - (26 - 15) = - 9'
+            },
+            {
+                'contents': '103 - 5 = 98',
+                'answer': 98,
+                'hint': 'Answer is 98'
+            },
+            {
+                'contents': '19 - (56 - 10) + 49',
+                'answer': 22,
+                'hint': '= 19 - 46 + 49 = 19 + 3 = 22 '
+            },
+            {
+                'contents': '300 - 270 =',
+                'answer': 30,
+                'hint': 'Answer is 30'
+            },
+            {
+                'contents': '100 - 16 - 15 =',
+                'answer': 69,
+                'hint': '= 100 - 31 = 69'
+            }
+        ]},
+
+        {'name': 'Division I',
+        'path_to_img': './assets/cheetah.png',
+        'due_date': datetime.datetime(2017, 5, 7),
+        'problems': [
+            {
+                'contents': '45 - 37 =',
+                'answer': 8,
+                'hint': '45 - 30 = 15'
+            },
+            {
+                'contents': '32 - 19  =',
+                'answer': 13,
+                'hint': '32 - 19 = 30 - 17'
+            },
+            {
+                'contents': '(8 + 7) - 12 =',
+                'answer': 3,
+                'hint': 'The answer is 3.'
+            },
+            {
+                'contents': '15 - 26 =',
+                'answer': -9,
+                'hint': '= - (26 - 15) = - 9'
+            },
+            {
+                'contents': '103 - 5 = 98',
+                'answer': 98,
+                'hint': 'Answer is 98'
+            },
+            {
+                'contents': '19 - (56 - 10) + 49',
+                'answer': 22,
+                'hint': '= 19 - 46 + 49 = 19 + 3 = 22 '
+            },
+            {
+                'contents': '300 - 270 =',
+                'answer': 30,
+                'hint': 'Answer is 30'
+            },
+            {
+                'contents': '100 - 16 - 15 =',
+                'answer': 69,
+                'hint': '= 100 - 31 = 69'
+            }
+        ]},
+
+        {'name': 'Division II',
+        'path_to_img': './assets/cheetah.png',
+        'due_date': datetime.datetime(2017, 5, 8),
+        'problems': [
+            {
+                'contents': '45 - 37 =',
+                'answer': 8,
+                'hint': '45 - 30 = 15'
+            },
+            {
+                'contents': '32 - 19  =',
+                'answer': 13,
+                'hint': '32 - 19 = 30 - 17'
+            },
+            {
+                'contents': '(8 + 7) - 12 =',
+                'answer': 3,
+                'hint': 'The answer is 3.'
+            },
+            {
+                'contents': '15 - 26 =',
+                'answer': -9,
+                'hint': '= - (26 - 15) = - 9'
+            },
+            {
+                'contents': '103 - 5 = 98',
+                'answer': 98,
+                'hint': 'Answer is 98'
+            },
+            {
+                'contents': '19 - (56 - 10) + 49',
+                'answer': 22,
+                'hint': '= 19 - 46 + 49 = 19 + 3 = 22 '
+            },
+            {
+                'contents': '300 - 270 =',
+                'answer': 30,
+                'hint': 'Answer is 30'
+            },
+            {
+                'contents': '100 - 16 - 15 =',
+                'answer': 69,
+                'hint': '= 100 - 31 = 69'
+            }
+        ]
+
+
+        }
 ]
