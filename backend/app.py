@@ -4,6 +4,8 @@ from flask_login import LoginManager, login_required, fresh_login_required, logi
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
+from sqlalchemy.exc import IntegrityError
+
 app = Flask(__name__)
 app.config.from_object('config')
 CORS(app, supports_credentials=True)
@@ -20,11 +22,17 @@ class Signup(Resource):
         password = json_data['password']
         name = json_data['name']
         print 'Hello' + username
-        new_user = models.User.create_user(name, username, password)
-        if new_user == False:
-            return {'error':'There was an error creating the account.'}, 400
-        login_user(new_user)
-        return {'id': new_user.id, 'username':new_user.username, "name": new_user.name}, 201
+        try:
+            new_user = models.User.create_user(name, username, password)
+            if new_user == False:
+                return {'error':'There was an error creating the account.'}, 400
+            login_user(new_user)
+            return {'id': new_user.id, 'username':new_user.username, "name": new_user.name}, 201
+        except IntegrityError as e:
+            errno = e.orig[0]
+            if errno == 1062:
+                return {'error': 'Username already in use'}, 400
+            raise e
 
 class Signin(Resource):
     def post(self):
