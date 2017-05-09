@@ -4,12 +4,12 @@
         {{> main_progress_container progress=progress}}
     </div>
     <div class="dropdown">
-        <span id="sort-title">Sort by Due Date</span>
+        <span id="sort-title">{{sort_display }}</span>
         <img src="./assets/DropdownIndicator.svg" />
         <div class="dropdown-content">
-            <p class="dropdown-option">Due Date</p>
-            <p class="dropdown-option">Incomplete</p>
-            <p class="dropdown-option">Completed</p>
+            <p class="dropdown-option" id ="option1">Due Date</p>
+            <p class="dropdown-option" id ="option2">Incomplete</p>
+            <p class="dropdown-option" id ="option3">Completed</p>
         </div>
     </div>
 </div>
