@@ -13,23 +13,33 @@ $(document).ready(function() {
         document.getElementById("login-form").removeChild(loginButton)
         $("#login-form").append(loader);
 
-        Request.POST(req, "signin", function(response) {
+        var postSinginCallback = function(response) {
             if (response && response.id) {
+                document.getElementById("login-form").removeChild(loader)
+                $("#login-form").append(loginButton);
                 sessionStorage.setItem("id", response.id);
                 sessionStorage.setItem("username", response.username);
                 sessionStorage.setItem("password", response.password);
                 window.location.href = "main.html";
             } else {
-                var $newdiv = document.createElement('div')
-                $newdiv.className = "error-message";
-                $newdiv.innerHTML = '<p> Invalid Login </p>';
-                $("body").append($newdiv)
+                if (response.status == 500 && (retryCount <= retryMax)){
+                    retryCount += 1;
+                    console.log('Retried POST /signin/' + retryCount.toString() + ' times.');
+                    Request.POST(req, "signin", postSinginCallback);
+                } else {
+                    document.getElementById("login-form").removeChild(loader)
+                    $("#login-form").append(loginButton);
+                    var $newdiv = document.createElement('div')
+                    $newdiv.className = "error-message";
+                    $newdiv.innerHTML = '<p> Invalid Login </p>';
+                    $("body").append($newdiv)
+                }
             }
-            document.getElementById("login-form").removeChild(loader)
-            $("#login-form").append(loginButton);
-        })
+        }
 
-
+        var retryMax = 10;
+        var retryCount = 0;
+        Request.POST(req, "signin", postSinginCallback);
     });
 
     $('#signup-form').submit(function(event) {
@@ -44,22 +54,31 @@ $(document).ready(function() {
         loader.innerHTML = '<div class="loader"></div>'
         document.getElementById("signup-form").removeChild(signUpButton)
         $("#signup-form").append(loader);
-        Request.POST(req, "signup", function(response) {
+        var postSingupCallback = function(response) {
             if (response && response.id) {
                 sessionStorage.setItem("id", response.id);
                 sessionStorage.setItem("username", response.username);
                 sessionStorage.setItem("password", response.password);
                 window.location.href = "main.html";
             } else {
-                var $newdiv = document.createElement('div')
-                $newdiv.className = "error-message";
-                $newdiv.innerHTML = '<p> This username has already been taken </p>';
-                $("body").append($newdiv)
+                if (response.status == 500 && (retryCount <= retryMax)){
+                    retryCount += 1;
+                    console.log('Retried POST /signup/' + retryCount.toString() + ' times.');
+                    Request.POST(req, "signup", postSingupCallback);
+                } else {
+                    document.getElementById("signup-form").removeChild(loader)
+                    $("#signup-form").append(signUpButton);
+                    var $newdiv = document.createElement('div');
+                    $newdiv.className = "error-message";
+                    $newdiv.innerHTML = '<p> This username has already been taken </p>';
+                    $("body").append($newdiv);
+                }
             }
-            document.getElementById("signup-form").removeChild(loader);
-            $("#signup-form").append(signUpButton);
-        })
-
+        }
+        var retryMax = 10;
+        var retryCount = 0;
+        Request.POST(req, "signup", postSingupCallback);
 
     });
+
 })

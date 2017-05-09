@@ -1,11 +1,9 @@
 <a class="exercise-row" href="./exercise.html?id={{ exercise.id }}">
     <div>
-        {{#if exercise.completed_problems}}
-            {{#if completed }}
-                <img class="icon" src="./assets/finished-icon.svg" />
-                {{else}}
-                <img class="icon" src="./assets/inprogress-icon.svg" />
-            {{/if}}
+        {{#if exercise.completed}}
+            <img class="icon" src="./assets/finished-icon.svg" />
+        {{else if exercise.inprogress}}
+            <img class="icon" src="./assets/inprogress-icon.svg" />
         {{else}}
             <div class="placeholder"> </div>
         {{/if}}
@@ -13,15 +11,24 @@
             <p class="exercise-number">Exercise {{exercise.number}}</p>
             <p class="exercise-title">{{exercise.name}}</p>
         </div>
-        {{#if exercise.due_tomorrow}}
-            <p class="due-date-tomorrow">Due Tomorrow - {{exercise.due_date}}</p>
+        {{#if exercise.inprogress}}
+            <div class="exercise-progress-container">
+                <p> {{exercise.percent}}% Complete </p>
+                <progress value={{exercise.decimal}}></progress>
+            </div>
+        {{/if}}
+        {{#if exercise.completed}}
+            <p class="due-date">Due {{exercise.due_date}}</p>
         {{else}}
-            {{#if exercise.late}}
-                <p class="late-due-date">{{exercise.due_date}}</p>
+            {{#if exercise.due_tomorrow}}
+                <p class="due-date-tomorrow">Due Tomorrow: {{exercise.due_date}}</p>
             {{else}}
-                <p class="due-date">Due {{exercise.due_date}}</p>
+                {{#if exercise.late}}
+                    <p class="late-due-date">{{exercise.due_date}}</p>
+                {{else}}
+                    <p class="due-date">Due {{exercise.due_date}}</p>
+                {{/if}}
             {{/if}}
-            
         {{/if}}
     </div>
 </a>

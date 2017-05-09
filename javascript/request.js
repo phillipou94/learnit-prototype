@@ -31,13 +31,15 @@ Request = function() {
             })
     };
 
-    that.PUT = function(req, path, completion) {
-        var url = BASE_URL + path
+    that.PUT = function(path, completion) {
+        var url = BASE_URL + path + "/"
         $.ajax({
             url: url,
-            data: req,
             type: 'PUT',
-            success: completion
+            success: completion,
+            error: function(xhr){
+                Request.PUT(path, completion)
+            }
         });
     };
 
@@ -46,7 +48,8 @@ Request = function() {
         $.ajax({
             url: url,
             type: 'DELETE',
-            success: completion
+            success: completion,
+            error: Request.DELETE(path, completion)
         });
     };
 
