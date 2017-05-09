@@ -29,13 +29,9 @@ $(document).ready(function() {
 
         var collections = response.collections;
 
-
-        collections = [{ path_to_img: "./assets/andrew-luck.png", name: "Testing Image 1" },
-            { path_to_img: "./assets/cheetah.png", name: "Testing Image 2" }
-        ];
-
         var n = collections.length
         if (n && n > 0) {
+            $("#message").text("Here are the photos you've collected!")
             var collectionThumbnails = collections.map(function(collection) {
                 return collectionThumbnail(collection)
             });
@@ -53,7 +49,6 @@ $(document).ready(function() {
             })
 
             modalContents.forEach(function(modal) {
-                console.log(modal)
                 $(".modal-content").append(modal)
             })
 
@@ -69,6 +64,8 @@ $(document).ready(function() {
             collectionModalThumbnails.forEach(function(thumbnail) {
                 $(".modal-content").append(thumbnail)
             })
+        } else {
+            $("#message").text("Do some exercises to collect some photos!")
         }
 
 
