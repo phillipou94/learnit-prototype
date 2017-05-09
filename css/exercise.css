@@ -131,6 +131,7 @@
     line-height: 40px;
     overflow: scroll;
     position: relative;
+    overflow-y: hidden;
 }
 
 .exercise-problem .answer-box {
