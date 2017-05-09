@@ -24,11 +24,14 @@ var collectionModalThumbnail = function(collection, index) {
 $(document).ready(function() {
 
     // Handlebars.partials = Handlebars.templates;
+    var loader = document.createElement('div');
+    loader.className = "loader-container";
+    loader.innerHTML = '<div class="loader"></div>'
+    $(".main-body").append(loader)
 
     Request.GET('collections', function(response) {
-
+        $(".loader-container").remove();
         var collections = response.collections;
-
         var n = collections.length
         if (n && n > 0) {
             $("#message").text("Here are the photos you've collected!")

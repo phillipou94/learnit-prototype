@@ -74,6 +74,12 @@
     pointer-events: initial;
 }
 
+.exercise-modal #next {
+    color: #F26B5C;
+    /*text-decoration: underline;*/
+    font-weight: bold;
+}
+
 .modal-contents {
     padding-top: 5%;
     display: flex;
