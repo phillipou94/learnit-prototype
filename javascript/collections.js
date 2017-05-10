@@ -1,6 +1,6 @@
 var Request = new Request();
 
-var collectionThumbnail = function(collection) {
+var collectionThumbnail = function(collection, index) {
     //{'path_to_img': self.path_to_img, 'name': self.name, 'number': self.number, 'id': self.id}
     return '<div class="column"> <img src=' + collection.path_to_img +
         ' style="width:100%" onclick="openModal();currentSlide(' + (index + 1) + ')" class="hover-shadow cursor">' +
@@ -37,8 +37,8 @@ $(document).ready(function() {
             var n = collections.length
             if (n && n > 0) {
                 $("#message").text("Here are the photos you've collected!")
-                var collectionThumbnails = collections.map(function(collection) {
-                    return collectionThumbnail(collection)
+                var collectionThumbnails = collections.map(function(collection, index) {
+                    return collectionThumbnail(collection, index)
                 });
 
                 var modalContents = collections.map(function(collection, index) {
