@@ -5,6 +5,16 @@ var numDaysBetween = function(d1, d2) {
     return diff / (1000 * 60 * 60 * 24);
 };
 
+var findNextExercise = function(exercises) {
+    for (var i = 0; i < exercises.length; i++) {
+        var exercise = exercises[i]
+        if (exercise.completed_problems !== exercise.total_problems) {
+            return exercise;
+        }
+    }
+    return null;
+}
+
 $(document).ready(function() {
     Handlebars.partials = Handlebars.templates;
     var loader = document.createElement('div');
@@ -33,6 +43,8 @@ $(document).ready(function() {
                 }
             );
 
+
+
             response.exercises.forEach(function(exercise) {
                 var today = new Date();
                 var exercise_due = new Date(exercise.due_date)
@@ -44,11 +56,13 @@ $(document).ready(function() {
 
             })
 
+            var nextExercise = findNextExercise(response.exercises);
             var subheaderHTML = Handlebars.templates['main_subheader_text']({
                 name: response.name,
                 completed_exercises: completedExercises.length,
+                nextExercise: nextExercise
             });
-            $('.subheader > .subheader-text').html(subheaderHTML);
+            $('.subheader').html(subheaderHTML);
 
             var progressPercent = Math.floor((completedExercises.length / response.exercises.length) * 100.0);
             var progressData = {
