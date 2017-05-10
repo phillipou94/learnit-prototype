@@ -17,10 +17,7 @@ $(document).ready(function() {
             if (response && response.id) {
                 document.getElementById("login-form").removeChild(loader)
                 $("#login-form").append(loginButton);
-                sessionStorage.setItem("id", response.id);
-                sessionStorage.setItem("username", response.username);
-                sessionStorage.setItem("password", response.password);
-                window.location.href = "main.html";
+                location.href = "./main.html";
             } else {
                 if (response.status == 500 && (retryCount <= retryMax)){
                     retryCount += 1;
@@ -56,10 +53,7 @@ $(document).ready(function() {
         $("#signup-form").append(loader);
         var postSingupCallback = function(response) {
             if (response && response.id) {
-                sessionStorage.setItem("id", response.id);
-                sessionStorage.setItem("username", response.username);
-                sessionStorage.setItem("password", response.password);
-                window.location.href = "main.html";
+                location.href = "./main.html";
             } else {
                 if (response.status == 500 && (retryCount <= retryMax)){
                     retryCount += 1;
