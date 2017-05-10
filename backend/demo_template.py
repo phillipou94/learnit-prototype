@@ -8,22 +8,22 @@ addition = [
     {
         'contents': '6 + 9 =',
         'answer': 15,
-        'hint': 'The second digit of the sum is one less than 6, since 9 is one less than 10.'
+        'hint': 'Count up from 9.'
     },
     {
         'contents': '16 + 4 =',
         'answer': 20,
-        'hint': 'First try finding 6 + 4, then add that number to 10.'
+        'hint': 'Try 6 + 4, then add 10.'
     },
     {
-        'contents': '1 + 9 =',
-        'answer': 10,
-        'hint': 'Adding 1 is like counting. Try saying 6, 7, 8, 9, ...'
+        'contents': '13 + 6 =',
+        'answer': 19,
+        'hint': 'Try 3 + 9, then add 10'
     },
     {
         'contents': '11 + 20 =',
-        'answer': 10,
-        'hint': 'Stack the numbers and add. 1 + 2 = _ & 1 + 0 = _.'
+        'answer': 31,
+        'hint': 'Stack and add.'
     }
 ]
 
@@ -36,17 +36,17 @@ subtraction = [
     {
         'contents': '12 - 4 =',
         'answer': 8,
-        'hint': 'Count backward from 12, only going four numbers. 11, 10, 9, ...'
+        'hint': '11, 10, 9, ...'
     },
     {
         'contents': '0 - 9 =',
         'answer': -9,
-        'hint': 'Subractng from 0 always equals the negative of the number you\'re subtracting.'
+        'hint': 'Negate the second number.'
     },
     {
         'contents': '32 - 32 =',
         'answer': 0,
-        'hint': 'A number minus itself leaves you with nothing aka ...'
+        'hint': 'anything - anything = 0'
     }
 ]
 
