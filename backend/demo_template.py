@@ -53,7 +53,7 @@ subtraction = [
 
 def template():
     exercises = []
-    start_date = datetime.datetime(datetime.datetime.year, datetime.datetime.month, datetime.datetime.day - 1)
+    start_date = datetime.datetime(datetime.datetime.today().year, datetime.datetime.today().month, datetime.datetime.today().day - 1)
     for i in range(8):
         due_date = start_date + datetime.timedelta(days=2*i)
 
