@@ -17,7 +17,19 @@
                 <progress value={{exercise.decimal}}></progress>
             </div>
         {{/if}}
-        <p class="due-date">Due {{exercise.due_date}}</p>
+        {{#if exercise.completed}}
+            <p class="due-date">Due {{exercise.due_date}}</p>
+        {{else}}
+            {{#if exercise.due_tomorrow}}
+                <p class="due-date-tomorrow">Due Tomorrow: {{exercise.due_date}}</p>
+            {{else}}
+                {{#if exercise.late}}
+                    <p class="late-due-date">{{exercise.due_date}}</p>
+                {{else}}
+                    <p class="due-date">Due {{exercise.due_date}}</p>
+                {{/if}}
+            {{/if}}
+        {{/if}}
     </div>
 </a>
 

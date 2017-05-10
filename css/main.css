@@ -273,3 +273,19 @@ progress[value]::-webkit-progress-value {
     margin-top: 40px;
     margin-right: 30px;
 }
+
+.due-date-tomorrow {
+    float: right;
+    color: #F26B5C;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-right: 30px;
+}
+
+.late-due-date {
+    float: right;
+    color: #465568;
+    text-decoration: line-through;
+    margin-top: 40px;
+    margin-right: 30px;
+}

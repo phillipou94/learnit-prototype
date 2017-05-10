@@ -1,4 +1,20 @@
 var Request = new Request();
+
+var numDaysBetween = function(d1, d2) {
+    var diff = d2.getTime() - d1.getTime();
+    return diff / (1000 * 60 * 60 * 24);
+};
+
+var findNextExercise = function(exercises) {
+    for (var i = 0; i < exercises.length; i++) {
+        var exercise = exercises[i]
+        if (exercise.completed_problems !== exercise.total_problems) {
+            return exercise;
+        }
+    }
+    return null;
+}
+
 $(document).ready(function() {
     Handlebars.partials = Handlebars.templates;
     var loader = document.createElement('div');
@@ -10,14 +26,14 @@ $(document).ready(function() {
 
         if (response && !response.error) {
             $(".loader-container").remove();
-            response.exercises = response.exercises.map(function(curr){
-                if (curr.completed_problems == curr.total_problems){
+            response.exercises = response.exercises.map(function(curr) {
+                if (curr.completed_problems == curr.total_problems) {
                     curr.completed = true;
-                } else if (curr.completed_problems > 0){
+                } else if (curr.completed_problems > 0) {
                     curr.inprogress = true;
                     var progressPercent = Math.floor((curr.completed_problems / curr.total_problems) * 100.0);
                     curr.percent = progressPercent;
-                    curr.decimal = (progressPercent/100.0);
+                    curr.decimal = (progressPercent / 100.0);
                 }
                 return curr;
             })
@@ -27,11 +43,26 @@ $(document).ready(function() {
                 }
             );
 
+
+
+            response.exercises.forEach(function(exercise) {
+                var today = new Date();
+                var exercise_due = new Date(exercise.due_date)
+                var days_till_due = numDaysBetween(today, exercise_due);
+                var late = days_till_due < 0;
+                var due_tomorrow = days_till_due > 0 && days_till_due < 1;
+                exercise.late = late;
+                exercise.due_tomorrow = due_tomorrow;
+
+            })
+
+            var nextExercise = findNextExercise(response.exercises);
             var subheaderHTML = Handlebars.templates['main_subheader_text']({
                 name: response.name,
                 completed_exercises: completedExercises.length,
+                nextExercise: nextExercise
             });
-            $('.subheader > .subheader-text').html(subheaderHTML);
+            $('.subheader').html(subheaderHTML);
 
             var progressPercent = Math.floor((completedExercises.length / response.exercises.length) * 100.0);
             var progressData = {
@@ -85,8 +116,7 @@ $(document).ready(function() {
         } else {
             if (response.status == 401 && response.error) {
                 location.href = './login.html';
-            }
-            else if (response.status == 500 && (retryCount <= retryMax)){
+            } else if (response.status == 500 && (retryCount <= retryMax)) {
                 retryCount += 1;
                 console.log('Retried GET /home/' + retryCount.toString() + ' times.');
                 Request.GET('home', getHomeCompletionHandler);
