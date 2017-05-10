@@ -77,6 +77,8 @@ $(document).ready(function() {
                 retryCount += 1;
                 console.log('Retried GET /collections/' + retryCount.toString() + ' times.');
                 Request.GET('collections', getCollectionsCallback);
+            } else if(response.status == 401){
+                location.href = './login.html';
             } else {
                 // TODO unknown error, handle accordingly
             }

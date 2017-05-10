@@ -49,7 +49,6 @@ Request = function() {
             url: url,
             type: 'DELETE',
             success: completion,
-            error: Request.DELETE(path, completion)
         });
     };
 
