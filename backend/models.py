@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
 
     def init_for_demo(self):
         from demo_template import template
-        for i, exercise in enumerate(template):
+        for i, exercise in enumerate(template()):
             new_exercise = Exercise(
                     path_to_img=exercise['path_to_img'],
                     name=exercise['name'],
