@@ -3,3 +3,4 @@ venv/
 *.pyc
 javascript/templates.js
 .DS_Store
+*.log
