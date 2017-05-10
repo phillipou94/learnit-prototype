@@ -3,7 +3,7 @@ var Request = new Request();
 var collectionThumbnail = function(collection) {
     //{'path_to_img': self.path_to_img, 'name': self.name, 'number': self.number, 'id': self.id}
     return '<div class="column"> <img src=' + collection.path_to_img +
-        ' style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">' +
+        ' style="width:100%" onclick="openModal();currentSlide(' + (index + 1) + ')" class="hover-shadow cursor">' +
         '<p class="image-title">' + collection.name + '</p></div>'
 }
 
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
     var getCollectionsCallback = function(response) {
 
-        if (response && !response.error){
+        if (response && !response.error) {
             $(".loader-container").remove();
             var collections = response.collections;
             var n = collections.length
@@ -73,7 +73,7 @@ $(document).ready(function() {
                 $("#message").text("Do some exercises to collect some photos!")
             }
         } else {
-            if (response.status && response.status == 500 && (retryCount < retryMax)){
+            if (response.status && response.status == 500 && (retryCount < retryMax)) {
                 retryCount += 1;
                 console.log('Retried GET /collections/' + retryCount.toString() + ' times.');
                 Request.GET('collections', getCollectionsCallback);
