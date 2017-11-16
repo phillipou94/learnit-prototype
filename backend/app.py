@@ -44,8 +44,7 @@ class Signin(Resource):
             if models.User.check_password(password, _user.hashed_password):
                 login_user(_user)
                 return {'id': _user.id, 'username': _user.username, "name": _user.name}, 200
-        else:
-            return {'error': 'There was an error signing in'}, 400
+        return {'error': 'There was an error signing in'}, 400
 
     @login_required
     def delete(self):
